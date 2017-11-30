@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 set -e
 
-mvn test
+mvn test -source 8
