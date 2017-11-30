@@ -88,7 +88,7 @@ public class MainGraphicInterfaceController {
 
 	private AnchorPane createAnchorPane(){
 		
-		List<Node> principalPaneChildrens = new ArrayList<>();
+		List<Node> principalPaneChildrens = new ArrayList<Node>();
 		principalPaneChildrens.addAll(Arrays.asList(imageRosaView,kinectImageView,imageRosaIconView));
 		AnchorPane anchorpane = new AnchorPane();
 		anchorpane.getChildren().addAll(principalPaneChildrens);
