@@ -1,0 +1,2 @@
+Librerías utilizadas: 
+* Java for Kinect (https://github.com/digitalworlds/java-for-kinect)
