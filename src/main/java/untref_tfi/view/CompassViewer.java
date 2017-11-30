@@ -21,7 +21,7 @@ public class CompassViewer extends Application{
 		myScene = mainGIController.getMainScene();		
 	
 		primaryStage.setScene(myScene);
-		primaryStage.setTitle("Compás Óptico");
+		primaryStage.setTitle("Compas Optico");
 		primaryStage.setWidth(1280);
 		primaryStage.setHeight(1024);
 		primaryStage.setResizable(false);

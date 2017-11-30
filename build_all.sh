@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 set -e
 
-mvn test -source 8
+mvn clean install test
