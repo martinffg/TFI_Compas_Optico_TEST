@@ -14,39 +14,11 @@
                 </configuration>
             </plugin>
         </plugins>
-		<resources>
-			  <resource>
-					<directory>lib</directory>
-					<includes>
-						  <include>ufdw_j4k_32bit.dll</include>
-						  <include>ufdw_j4k_64bit.dll</include>
-						  <include>ufdw_j4k2_32bit.dll</include>
-						  <include>ufdw_j4k2_64bit.dll</include>
-					</includes>
-			  </resource> 
-		 </resources>
    </build> 
-   <dependencies>	  
-		  <dependency>
-				<groupId>CompasOptico</groupId>
-				<artifactId>CompasOptico</artifactId>
-				<version>1.0</version>
-				<scope>system</scope>
-				<systemPath>${project.basedir}/src/main/resources/lib/ufdw.jar</systemPath>
-		  </dependency>
-		  <dependency>
-				<groupId>CompasOptico</groupId>
-				<artifactId>CompasOptico</artifactId>
-				<version>1.0</version>
-				<scope>system</scope>
-				<systemPath>${project.basedir}/src/main/resources/lib/jogl-all.jar</systemPath>
-		  </dependency>
-		  <dependency>
-				<groupId>CompasOptico</groupId>
-				<artifactId>CompasOptico</artifactId>
-				<version>1.0</version>
-				<scope>system</scope>
-				<systemPath>${project.basedir}/src/main/resources/lib/gluegen-rt.jar</systemPath>
-		  </dependency>
-	</dependencies>	  
+   <repositories>
+		<repository>
+			<id>local-maven-repo</id>
+			<url>file:///${project.basedir}/src/main/resources/lib</url>
+		</repository>
+   </repositories>	  
 </project>
