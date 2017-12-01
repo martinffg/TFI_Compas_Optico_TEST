@@ -21,9 +21,9 @@
 							<file>${basedir}/lib/gluegen-rt.jar</file>
 							<file>${basedir}/lib/jogl-all.jar</file>
 							<repositoryLayout>default</repositoryLayout>
-							<groupId>com.mylib</groupId>
-							<artifactId>mylib-ufdw</artifactId>
-							<version>0.0.1</version>
+							<groupId>CompasOptico</groupId>
+							<artifactId>CompasOptico</artifactId>
+							<version>1.0</version>
 							<packaging>jar</packaging>
 							<generatePom>true</generatePom>
 						</configuration>
