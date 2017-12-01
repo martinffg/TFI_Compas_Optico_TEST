@@ -32,21 +32,21 @@
 				<artifactId>CompasOptico</artifactId>
 				<version>1.0</version>
 				<scope>system</scope>
-				<systemPath>${project.basedir}/lib/ufdw.jar</systemPath>
+				<systemPath>${project.basedir}/src/main/resources/lib/ufdw.jar</systemPath>
 		  </dependency>
 		  <dependency>
 				<groupId>CompasOptico</groupId>
 				<artifactId>CompasOptico</artifactId>
 				<version>1.0</version>
 				<scope>system</scope>
-				<systemPath>${project.basedir}/lib/jogl-all.jar</systemPath>
+				<systemPath>${project.basedir}/src/main/resources/lib/jogl-all.jar</systemPath>
 		  </dependency>
 		  <dependency>
 				<groupId>CompasOptico</groupId>
 				<artifactId>CompasOptico</artifactId>
 				<version>1.0</version>
 				<scope>system</scope>
-				<systemPath>${project.basedir}/lib/gluegen-rt.jar</systemPath>
+				<systemPath>${project.basedir}/src/main/resources/lib/gluegen-rt.jar</systemPath>
 		  </dependency>
 	</dependencies>	  
 </project>
