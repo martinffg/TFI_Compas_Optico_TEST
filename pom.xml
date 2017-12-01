@@ -13,6 +13,20 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
-        </plugins>
+        </plugins
+		<resources>
+		  <resource>
+			<directory>lib</directory>
+			<includes>
+			  <include>gluegen-rt.jar</include>
+			  <include>jogl-all.jar</include>
+			  <include>ufdw.jar</include>
+			  <include>ufdw_j4k_32bit.dll</include>
+			  <include>ufdw_j4k_64bit.dll</include>
+			  <include>ufdw_j4k2_32bit.dll</include>
+			  <include>ufdw_j4k2_64bit.dll</include>
+			</includes>
+		  </resource>
+		</resources>
   </build>
 </project>
