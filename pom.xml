@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>CompasOptico</groupId>
   <artifactId>CompasOptico</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.0</version>
   <build>
         <plugins>
             <plugin>
@@ -15,18 +15,38 @@
             </plugin>
         </plugins>
 		<resources>
-		  <resource>
-			<directory>lib</directory>
-			<includes>
-			  <include>gluegen-rt.jar</include>
-			  <include>jogl-all.jar</include>
-			  <include>ufdw.jar</include>
-			  <include>ufdw_j4k_32bit.dll</include>
-			  <include>ufdw_j4k_64bit.dll</include>
-			  <include>ufdw_j4k2_32bit.dll</include>
-			  <include>ufdw_j4k2_64bit.dll</include>
-			</includes>
-		  </resource>
-		</resources>
-  </build>
+			  <resource>
+					<directory>lib</directory>
+					<includes>
+						  <include>ufdw_j4k_32bit.dll</include>
+						  <include>ufdw_j4k_64bit.dll</include>
+						  <include>ufdw_j4k2_32bit.dll</include>
+						  <include>ufdw_j4k2_64bit.dll</include>
+					</includes>
+			  </resource> 
+		 </resources>
+   </build> 
+   <dependencies>	  
+		  <dependency>
+				<groupId>CompasOptico</groupId>
+				<artifactId>CompasOptico</artifactId>
+				<version>1.0</version>
+				<scope>system</scope>
+				<systemPath>${project.basedir}/lib/ufdw.jar</systemPath>
+		  </dependency>
+		  <dependency>
+				<groupId>CompasOptico</groupId>
+				<artifactId>CompasOptico</artifactId>
+				<version>1.0</version>
+				<scope>system</scope>
+				<systemPath>${project.basedir}/lib/jogl-all.jar</systemPath>
+		  </dependency>
+		  <dependency>
+				<groupId>CompasOptico</groupId>
+				<artifactId>CompasOptico</artifactId>
+				<version>1.0</version>
+				<scope>system</scope>
+				<systemPath>${project.basedir}/lib/gluegen-rt.jar</systemPath>
+		  </dependency>
+	</dependencies>	  
 </project>

@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 set -e
 
-mvn compile
+mvn clean compile test
