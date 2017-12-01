@@ -17,9 +17,7 @@
 						<id>install-external</id>
 						<phase>clean</phase>
 						<configuration>
-							<file>${basedir}/lib/ufdw.jar</file>
-							<file>${basedir}/lib/gluegen-rt.jar</file>
-							<file>${basedir}/lib/jogl-all.jar</file>
+							<file>${project.basedir}/lib/*.jar</file>
 							<repositoryLayout>default</repositoryLayout>
 							<groupId>CompasOptico</groupId>
 							<artifactId>CompasOptico</artifactId>
@@ -35,13 +33,6 @@
             </plugin>
 		</plugins>	
    </build> 
-   <dependencies>			
-			<dependency>
-				<groupId>com.mylib</groupId>
-				<artifactId>mylib-core</artifactId>
-				<version>0.0.1</version>
-			</dependency>
-    </dependencies>
    <repositories>
 		<repository>
 			<id>local-maven-repo</id>
