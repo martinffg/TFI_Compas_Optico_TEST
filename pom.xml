@@ -14,5 +14,10 @@
                 </configuration>
             </plugin>
         </plugins>
+		<resources>
+			<resource>
+				<directory>lib</directory>
+			</resource>
+		</resources>
   </build>
 </project>
