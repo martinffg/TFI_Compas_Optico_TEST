@@ -12,8 +12,42 @@
                     <source>1.8</source>
                     <target>1.8</target>
                 </configuration>
+				
+				
+				<artifactId>maven-install-plugin</artifactId>
+				<version>2.5.2</version>
+				<executions>
+					<execution>
+						<id>install-external</id>
+						<phase>clean</phase>
+						<configuration>
+							<file>${basedir}/lib/ufdw.jar</file>
+							<repositoryLayout>default</repositoryLayout>
+							<groupId>com.mylib</groupId>
+							<artifactId>mylib-ufdw</artifactId>
+							<version>0.0.1</version>
+							<packaging>jar</packaging>
+							<generatePom>true</generatePom>
+						</configuration>
+						<goals>
+							<goal>install-file</goal>
+						</goals>
+					</execution>
+				</executions>
             </plugin>
-        </plugins>
+        
+		
+		</plugins>
+		
+		<dependencies>
+			<dependency>
+				<groupId>com.mylib</groupId>
+				<artifactId>mylib-core</artifactId>
+				<version>0.0.1</version>
+			</dependency>
+		</dependencies>
+		
+		
    </build> 
    <repositories>
 		<repository>
