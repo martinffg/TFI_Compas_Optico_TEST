@@ -16,7 +16,7 @@
         </plugins>
 		<resources>
 			<resource>
-				<directory>lib</directory>
+				<directory>src/lib</directory>
 			</resource>
 		</resources>
   </build>
