@@ -2,4 +2,4 @@
 
 set -e
 
-ant
+mvn clean compile test
