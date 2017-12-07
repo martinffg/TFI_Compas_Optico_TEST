@@ -16,11 +16,10 @@
         </plugins>
   </build>
   <repositories>
-  <repository>
-    <id>data-local</id>
-    <name>data</name>
-    <url>file://${project.basedir}/lib</url>
-  </repository>
+	<repository>
+		<id>repo</id>
+		<url>file://${project.basedir}/lib</url>
+	</repository>
   </repositories>
   
 </project>
