@@ -1,7 +1,7 @@
 <project xmlns:ivy="antlib:org.apache.ivy.ant" name="compas-optico" basedir="." default="test">
 	<property name="build" location="build" />
 	<property name="lib" location="lib" />
-	<property name="resource" location="resource"/>
+	<property name="test" location="test"/>
 	<property name="classes.dir" location="build" />
 	<property name="instrumented.dir" location="${build}/instrumented" />
 	<property name="cobertura.dir" location="${lib}" />
@@ -34,7 +34,7 @@
 		<pathelement location="${build}" />
 		<pathelement location="${instrumented.dir}" />
 		<pathelement location="${build}/tests" />
-		<pathelement location="${resource}" />
+		<pathelement location="${test}" />
 	</path>
 
 	<path id="cobertura.classpath">
