@@ -1,7 +1,6 @@
 <project xmlns:ivy="antlib:org.apache.ivy.ant" name="compas-optico" basedir="." default="test">
 	<property name="build" location="build" />
 	<property name="lib" location="lib" />
-	<property name="testFiles" location="testFiles"/>
 	<property name="resource" location="resource"/>
 	<property name="classes.dir" location="build" />
 	<property name="instrumented.dir" location="${build}/instrumented" />
@@ -11,6 +10,7 @@
 	<property name="reports.xml.dir" location="${reports.dir}/junit-xml" />
 	<property name="reports.html.dir" location="${reports.dir}/junit-html" />
 	<property name="src.dir" location="src" />
+	<property name="kinectlibs" location="${src.dir}/resource/libs" />
 	<property name="coverage.xml.dir" location="${reports.dir}/cobertura-xml" />
 	<property name="coverage.summaryxml.dir" location="${reports.dir}/cobertura-summary-xml" />
 	<property name="coverage.html.dir" location="${reports.dir}/cobertura-html" />
@@ -26,6 +26,9 @@
 
 	<path id="classpath">
 		<fileset dir="${lib}">
+			<include name="*.jar" />
+		</fileset>
+		<fileset dir="${kinectlibs}">
 			<include name="*.jar" />
 		</fileset>
 		<pathelement location="${build}" />
@@ -144,9 +147,6 @@
                 <formatter type="plain" usefile="false"/>
             </batchtest>
         </junit>
-		<copy todir="${build}/testFiles" preservelastmodified="true">
-		    <fileset dir="${testFiles}"/>
-		</copy>
     </target>
 
 
@@ -185,5 +185,21 @@
 		
 	</target>
 	<!-- End of 'Resolve dependencies -->
+	
+	<target name="run-pmd" depends="setup, resolve">
+		<taskdef name="pmd" classname="net.sourceforge.pmd.ant.PMDTask" >
+			<classpath refid="pmd.classpath" />
+		</taskdef>
+		<pmd shortFilenames="true">
+			<ruleset>rulesets/favorites.xml</ruleset>
+			<ruleset>basic</ruleset>
+			<ruleset>imports</ruleset>
+			<formatter type="html" toFile="${reports.dir}/pmd.html" linkPrefix="http://pmd.sourceforge.net/xref/" toConsole="true"/>
+            <formatter type="xml" toFile="${reports.dir}/pmd.xml" linkPrefix="http://pmd.sourceforge.net/xref/" toConsole="false"/>
+			<fileset dir="src">
+				<include name="**/*.java" />
+			</fileset>
+		</pmd>
+	</target>
 
 </project>

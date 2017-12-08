@@ -2,6 +2,7 @@ build/
 tmp/
 .settings/
 bin/
+lib/
 
 *.sw*
 
