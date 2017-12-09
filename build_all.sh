@@ -1,5 +1,1 @@
-#!/usr/bin/env sh
-
-set -e
-
-ant
+mvn clean test
