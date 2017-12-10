@@ -79,19 +79,19 @@ public class ImageCaptureController {
 		Color color = Color.ORANGE;
 		for (int i = 0; i < imagenKinect.getWidth(); i++) {
 			for (int j = 0; j < imagenKinect.getHeight() ; j++) {			
-				// pinta de color los ejes centrales de la imagen (ancho 2 pixeles)
-				if ((i==319)||(i==320)||(j==239)||(j==240)){
+				if (paintablePoint(i,j)) {
 					imagenKinect.setRGB(i, j,color.getRGB());
-				} 
-				/*
-					else if (Math.sqrt(Math.pow(i-319,2)+Math.pow(j-239,2))==10){
-						imagenKinect.setRGB(i, j,color.getRGB());
-					}
-				*/
+				}
 			}
 		}
 		
 		return imagenKinect;
 	}
+	
+	private Boolean paintablePoint(int i, int j){
+		// pinta de color los ejes centrales de la imagen (ancho 2 pixeles)
+		return ((i==319)||(i==320)||(j==239)||(j==240));
+			
+	} 
 
 }

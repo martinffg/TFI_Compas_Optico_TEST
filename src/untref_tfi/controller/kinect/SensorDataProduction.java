@@ -62,18 +62,22 @@ public class SensorDataProduction implements SensorData {
 		
 		for (int i = 0; i < this.getWidth(); i+=cantPixeles) {
 			for (int j = 0; j < this.getHeight() ; j+= cantPixeles) {								
-				
-				if(this.getDistancia(i,j) < dist - deltaContorno ){	
-					
-					this.pintarContorno(i, j, cantPixeles, Color.BLACK, this.getImagenProfundidad());		
-				
-				} else 
-					if ( this.getDistancia(i, j) >= dist - deltaContorno && this.getDistancia(i, j) <= dist + deltaContorno) {
-					
-						this.pintarContorno(i, j, cantPixeles,colorContorno, this.getImagenProfundidad());
-					}
+				evaluarPintarContorno(dist, cantPixeles, colorContorno, deltaContorno, i, j);
 			}
 		}
+	}
+
+	private void evaluarPintarContorno(float dist, int cantPixeles, Color colorContorno, short deltaContorno, int i,
+			int j) {
+		if(this.getDistancia(i,j) < dist - deltaContorno ){	
+			
+			this.pintarContorno(i, j, cantPixeles, Color.BLACK, this.getImagenProfundidad());		
+		
+		} else 
+			if ( this.getDistancia(i, j) >= dist - deltaContorno && this.getDistancia(i, j) <= dist + deltaContorno) {
+			
+				this.pintarContorno(i, j, cantPixeles,colorContorno, this.getImagenProfundidad());
+			}
 	}	
 	
 	@Override
@@ -83,31 +87,40 @@ public class SensorDataProduction implements SensorData {
 		int max = 30000;//3 metros
 		int min = 7000;//70 cm
 		int dist = max;
-		Color color;
-		float hue;
+		int anchoEvaluable=getWidth() -1;
+		int altoEvaluable=getHeight() -1;
 		
-		int i,j;
 		if (dist >= 2) {
 			deltaContorno = 100;
 		}
 		
 		while(dist >= min){
+	
+			recorrerImagenParaContorno(deltaContorno, dist, anchoEvaluable,altoEvaluable);
+			dist -= distEntreCurvas;
 		
-			for ( i = getWidth() -1; i > 0; i -= 3) {
-				for ( j = getHeight() -1; j > 0; j -= 3) {
-													
-					if (this.getDistancia(i, j) >= dist - deltaContorno
-							&& this.getDistancia(i, j) <= dist + deltaContorno) {
-						
-						hue = (float)(this.getDistancia(i, j)/100000);
-						color = new Color(Color.HSBtoRGB(hue, 1.0f, 1.0f));
-						
-						this.pintarContorno(i, j, 3, color, this.getImagenColor());
-					}
-				}
+		}
+	}
+	
+	private void recorrerImagenParaContorno(int deltaContorno, int dist, int valorI, int valorJ){
+		for ( int i = valorI; i > 0; i -= 3) {
+			for ( int j = valorJ; j > 0; j -= 3) {
+												
+				evaluarPintarContorno(deltaContorno, dist, i, j);
 			}
-		
-		dist -= distEntreCurvas;
+		}
+	}
+
+	private void evaluarPintarContorno(int deltaContorno, int dist, int i, int j) {
+		Color color;
+		float hue;
+		if (this.getDistancia(i, j) >= dist - deltaContorno
+				&& this.getDistancia(i, j) <= dist + deltaContorno) {
+			
+			hue = (float)(this.getDistancia(i, j)/100000);
+			color = new Color(Color.HSBtoRGB(hue, 1.0f, 1.0f));
+			
+			this.pintarContorno(i, j, 3, color, this.getImagenColor());
 		}
 	}		
 
@@ -156,20 +169,26 @@ public class SensorDataProduction implements SensorData {
 				float min = 7000;//70 cm
 
 				Color color;
-				if (depth[z] == 0) {
-					color = Color.gray;
-				} else if (depth[z] > max) {
-					color = Color.WHITE;
-				} else if (depth[z] < min) {
-					color = Color.white;
-				} else {
-					float hue = (1 / (max - min)) * (depth[z] - min);
-					color = new Color(Color.HSBtoRGB(hue, 1.0f, 1.0f));
-				}
+				color = evaluarColorDepth(z, max, min);
 				this.matrizProfundidad[j][i] = depth[z];
 				imagenProfundidad.setRGB(j, i, color.getRGB());
 			}
 		}
+	}
+
+	private Color evaluarColorDepth(int z, float max, float min) {
+		Color color;
+		if (depth[z] == 0) {
+			color = Color.gray;
+		} else if (depth[z] > max) {
+			color = Color.WHITE;
+		} else if (depth[z] < min) {
+			color = Color.white;
+		} else {
+			float hue = (1 / (max - min)) * (depth[z] - min);
+			color = new Color(Color.HSBtoRGB(hue, 1.0f, 1.0f));
+		}
+		return color;
 	}
 
 	private int getWidth() {
