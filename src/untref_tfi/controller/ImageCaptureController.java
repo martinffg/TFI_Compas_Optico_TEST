@@ -13,7 +13,7 @@ public class ImageCaptureController {
 	private Kinect kinect;
 	private MainGraphicInterfaceController compassMGIC;
 	private int contador=0;
-	
+		
 	public ImageCaptureController(MainGraphicInterfaceController mainGIController) {
 		setupKinect();
 		compassMGIC=mainGIController;
@@ -58,7 +58,6 @@ public class ImageCaptureController {
 		data = new SensorDataProduction(kinect);
 		BufferedImage imagenKinect = data.getImagenColor();
 		compassMGIC.setKinectImage(SwingFXUtils.toFXImage(imagenKinect, null));
-
 		ImageCaptureRefresh imageCaptureRefresh = new ImageCaptureRefresh(this);
 		imageCaptureRefresh.run();
 	}
