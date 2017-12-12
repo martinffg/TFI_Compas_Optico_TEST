@@ -27,7 +27,7 @@ public class ImageCaptureController {
 		if (chequearInicializacionKinect()) {
 			setearAnguloDeElevacionDefault(); 
 		}else {
-			System.out.println("El sensor Kinect no está inicializado, fallo al capturar imágenes");
+			System.out.println("El sensor Kinect no esta inicializado, fallo al capturar imagenes");
 		}
 	}
 
