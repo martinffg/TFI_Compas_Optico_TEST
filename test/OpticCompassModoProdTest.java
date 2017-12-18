@@ -4,7 +4,8 @@ import org.junit.Test;
 import javafx.application.Platform;
 
 
-public class OpticCompassModoTest {
+
+public class OpticCompassModoProdTest {
 
 	@Test
 	public void mainTest() {
@@ -15,7 +16,7 @@ public class OpticCompassModoTest {
 				public void run() {
 					try {
 						OpticCompass oc = new OpticCompass();
-						String[] args = {"test"};
+						String[] args = {};
 						oc.start(args);
 						
 						if (Platform.isFxApplicationThread()) {

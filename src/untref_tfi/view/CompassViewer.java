@@ -36,4 +36,8 @@ public class CompassViewer extends Application{
 		});
 		primaryStage.show();
 	}
+	
+	public MainGraphicInterfaceController getMainGraphIntCont(){
+		return mainGIController;
+	}
 }
