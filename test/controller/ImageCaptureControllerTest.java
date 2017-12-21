@@ -26,17 +26,17 @@ public class ImageCaptureControllerTest {
 								Assert.assertTrue(Platform.isFxApplicationThread());
 							}
 						} catch (Exception e) {
-							System.out.println("iccProdTest() exception");
+							//System.out.println("iccProdTest() exception");
 						}
 				}
 			});
 			
 			thread.start();
 	
-			Thread.sleep(2000);
+			Thread.sleep(1000);
 			Assert.assertFalse(Platform.isFxApplicationThread());
 		}catch(InterruptedException ex){
-			System.out.println("Exception stopping mainTest catched.");
+			//System.out.println("Exception stopping iccProdTest catched.");
 		}
 	}
 	

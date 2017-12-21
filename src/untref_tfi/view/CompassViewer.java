@@ -15,7 +15,7 @@ public class CompassViewer extends Application{
 	
 	public CompassViewer(boolean isTest){
 		isTestMode=isTest;
-		System.out.println("Cvw Testmode: "+isTestMode);
+		//System.out.println("Cvw Testmode: "+isTestMode);
 	}
 	
 	@Override

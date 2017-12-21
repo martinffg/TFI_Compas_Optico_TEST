@@ -8,7 +8,7 @@ import javafx.application.Platform;
 public class OpticCompassModoProdTest {
 
 	@Test
-	public void mainTest() {
+	public void mainProdTest() {
 		try {
 			Thread thread = new Thread(new Runnable() {
 				
@@ -23,18 +23,17 @@ public class OpticCompassModoProdTest {
 							Assert.assertTrue(Platform.isFxApplicationThread());
 						}
 					}catch(Exception e){
-						//e.printStackTrace();
-						System.out.println("Exception launching OpticCompass.main catched.");
+						//System.out.println("Exception launching OpticCompass.main catched.");
 					}
 				}
 			});
 			
 			thread.start();
 	
-			Thread.sleep(2000);
+			Thread.sleep(1000);
 			Assert.assertFalse(Platform.isFxApplicationThread());
 		}catch(InterruptedException ex){
-			System.out.println("Exception stopping mainTest catched.");
+			//System.out.println("Exception stopping mainProdTest catched.");
 		}
 	}
 }
