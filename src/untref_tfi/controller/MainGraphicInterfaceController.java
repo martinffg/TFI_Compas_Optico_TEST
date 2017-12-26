@@ -3,7 +3,6 @@ package untref_tfi.controller;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -22,6 +21,12 @@ public class MainGraphicInterfaceController {
 	private ImageView imageRosaIconView;
 	private ImageCaptureController imageCapture;
 	private Scene mainScene;
+	private static final int maxWidth=640;
+	private static final int maxlength=480;
+	private static final int zeroXref=maxWidth/2;  // 0Xref: 320
+	private static final int zeroYref=maxlength/2; // 0Yref: 240
+	private int selectedXpoint=zeroXref;
+	private int selectedYpoint=zeroYref;
 	
 	public MainGraphicInterfaceController(boolean isTest){
 		
@@ -87,13 +92,24 @@ public class MainGraphicInterfaceController {
 		kinectImageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
  
             public void handle(MouseEvent e) {
-            	System.out.println("["+e.getX()+", "+e.getY()+"]");
+
+            	convertXYclicToCartesianSelectedPoint(e);
+            	
+            	System.out.println("["+selectedXpoint+", "+selectedYpoint+"]");
             }
+
+			
         });
+	}
+	
+	private void convertXYclicToCartesianSelectedPoint(MouseEvent e) {
+		selectedXpoint=(int) (e.getX() -zeroXref);
+    	selectedYpoint=(int) (e.getY() * -1) + zeroYref;
 	}
 
 	private AnchorPane createAnchorPane(){
 		
+		//Label label3 = new Label("Search",null);
 		List<Node> principalPaneChildrens = new ArrayList<Node>();
 		principalPaneChildrens.addAll(Arrays.asList(imageRosaView,kinectImageView,imageRosaIconView));
 		AnchorPane anchorpane = new AnchorPane();
@@ -106,6 +122,8 @@ public class MainGraphicInterfaceController {
 		AnchorPane.setTopAnchor(kinectImageView, 272.0);
 		AnchorPane.setBottomAnchor(kinectImageView, 272.0);
 		AnchorPane.setLeftAnchor(kinectImageView, 320.0);
+		//AnchorPane.setTopAnchor(label3, 216.0);
+		//AnchorPane.setLeftAnchor(label3, 114.0);
 		
 		return anchorpane;
 	}

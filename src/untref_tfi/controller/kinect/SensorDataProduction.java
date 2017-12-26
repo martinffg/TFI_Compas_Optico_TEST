@@ -19,8 +19,12 @@ public class SensorDataProduction implements SensorData {
 		if (!kinect.isInitialized()) {
 			kinect = new Kinect();
 			kinect.start(Kinect.DEPTH | Kinect.COLOR | Kinect.SKELETON | Kinect.XYZ | Kinect.PLAYER_INDEX);
-			//System.out.println("Falla al inicializar la kinect.");
-			//System.exit(2);
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				//e.printStackTrace();
+			}
+			kinect.setElevationAngle(0);
 		}
 				
 		this.colorFrame = kinect.getColorFrame();
@@ -168,10 +172,10 @@ public class SensorDataProduction implements SensorData {
 		matrizProfundidad = new double[this.getWidth()][this.getHeight()];		
 		imagenProfundidad = new BufferedImage(this.getWidth(),this.getHeight(), BufferedImage.TYPE_3BYTE_BGR);
 		
-		for (int i = 0; i < 480; i++) {
-			for (int j = 0; j < 640; j++) {
+		for (int i = 0; i < this.getHeight(); i++) {
+			for (int j = 0; j < this.getWidth(); j++) {
 				
-				int height = 640 * i;
+				int height = this.getWidth() * i;
 				int z = j + height;
 
 				float max = 30000;//3 metros
