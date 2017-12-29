@@ -3,6 +3,7 @@ package untref_tfi.controller;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -143,5 +144,6 @@ public class MainGraphicInterfaceController {
 		imageRosaView.setFitHeight(1024);
 		imageRosaView.setFitWidth(1280);
 	}
+	
 
 }

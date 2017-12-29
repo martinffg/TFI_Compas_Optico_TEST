@@ -17,8 +17,6 @@ public class SensorDataProductionTest {
 			BufferedImage img2 = sensor.getImagenColorBackup();
 			Assert.assertEquals(img1.getRGB(40,40), img2.getRGB(40,40));
 			Assert.assertEquals(img1.getRGB(340,280), img2.getRGB(340,280));
-			sensor.setPixelColorPorProfundidad(0.5f, 3, Color.BLACK);
-			sensor.pintarCurvaNivel(4);
 			sensor.setColorEnPixel(0,0,Color.WHITE);
 			sensor.getColorEnPixel(0,0);
 			sensor.getDistancia(0, 0);
