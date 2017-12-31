@@ -12,6 +12,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 
 public class MainGraphicInterfaceController {
@@ -21,6 +22,7 @@ public class MainGraphicInterfaceController {
 	private ImageView imageRosaView;
 	private ImageView imageRosaIconView;
 	private ImageCaptureController imageCapture;
+	private SelectedPixelPaneController pixelPanel;
 	private Scene mainScene;
 	private static final int maxWidth=640;
 	private static final int maxlength=480;
@@ -36,7 +38,7 @@ public class MainGraphicInterfaceController {
 		createKinectImageView();
 		createImageRosaView();
 		createImageRosaIconView();
-		
+		pixelPanel= new SelectedPixelPaneController("Point Information");		
 	}
 	
 	public Scene getMainScene(){
@@ -45,8 +47,8 @@ public class MainGraphicInterfaceController {
 		StackPane mainPane = new StackPane();
 		mainPane.getChildren().add(anchorpane);
 		mainPane.setAlignment(Pos.CENTER);
+		mainPane.setStyle("-fx-background-color: #C7F2FE");
 		mainScene = new Scene(mainPane);
-		
 		return mainScene;
 	}
 	
@@ -96,7 +98,10 @@ public class MainGraphicInterfaceController {
 
             	convertXYclicToCartesianSelectedPoint(e);
             	
-            	System.out.println("["+selectedXpoint+", "+selectedYpoint+"]");
+            	pixelPanel.setXYvalues(selectedXpoint,selectedYpoint,
+            			imageCapture.getXYMatrizProfundidad((int)e.getX(),(int)e.getY()),
+            			imageCapture.getXYMatrizRGBColorCadena((int)e.getX(),(int)e.getY()));
+       
             }
 
 			
@@ -110,9 +115,9 @@ public class MainGraphicInterfaceController {
 
 	private AnchorPane createAnchorPane(){
 		
-		//Label label3 = new Label("Search",null);
+		Pane pixelPane=pixelPanel.getPane();
 		List<Node> principalPaneChildrens = new ArrayList<Node>();
-		principalPaneChildrens.addAll(Arrays.asList(imageRosaView,kinectImageView,imageRosaIconView));
+		principalPaneChildrens.addAll(Arrays.asList(imageRosaView,kinectImageView,imageRosaIconView,pixelPane));
 		AnchorPane anchorpane = new AnchorPane();
 		anchorpane.getChildren().addAll(principalPaneChildrens);
 		AnchorPane.setTopAnchor(imageRosaIconView, 20.0);
@@ -123,8 +128,8 @@ public class MainGraphicInterfaceController {
 		AnchorPane.setTopAnchor(kinectImageView, 272.0);
 		AnchorPane.setBottomAnchor(kinectImageView, 272.0);
 		AnchorPane.setLeftAnchor(kinectImageView, 320.0);
-		//AnchorPane.setTopAnchor(label3, 216.0);
-		//AnchorPane.setLeftAnchor(label3, 114.0);
+		AnchorPane.setBottomAnchor(pixelPane, 40.0);
+		AnchorPane.setLeftAnchor(pixelPane, 20.0);
 		
 		return anchorpane;
 	}

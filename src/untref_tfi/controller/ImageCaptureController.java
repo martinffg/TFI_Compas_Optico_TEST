@@ -105,5 +105,15 @@ public class ImageCaptureController {
 		return (i==320)||(j==240);
 		
 	}
-
+	
+	public String getXYMatrizRGBColorCadena (int x,int y){
+		String cadenaColor="";
+		Color color = data.getColorEnPixel(x, y);
+		cadenaColor="["+color.getRed()+";"+color.getGreen()+";"+color.getBlue()+"]";	
+		return cadenaColor;
+	}
+	
+	public double getXYMatrizProfundidad (int x,int y){
+		return data.getDistancia(x, y);
+	}
 }
