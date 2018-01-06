@@ -1,5 +1,7 @@
 package untref_tfi.controller;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -49,12 +51,13 @@ public class VerticalKinectAngleSelectionPaneController {
 				}
 		});
 		
-		sliderAnguloVertical.valueProperty().addListener((e) -> {
-																	int value = (int)sliderAnguloVertical.getValue();
-																	mgic.setElevationAngle(value);
-																	angleValue.setText(String.valueOf(value)+" °");
-																});
-        
+		sliderAnguloVertical.valueProperty().addListener(new ChangeListener<Number>() {
+            public void changed(ObservableValue<? extends Number> ov, Number old_val, Number new_val) {
+                    mgic.setElevationAngle(new_val.intValue());
+        			angleValue.setText(String.valueOf(new_val.intValue())+" °");
+                }
+            });
+		
 		panel = new VBox();
 		panel.getChildren().addAll(title, sliderAnguloVertical,angleValue);
 		panel.setStyle("-fx-background-color: #6DF1D8; -fx-border-color: #29446B; -fx-border-width:2px; -fx-border-style: solid;");
