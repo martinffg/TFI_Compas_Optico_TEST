@@ -25,7 +25,7 @@ public class VerticalKinectAngleSelectionPaneController {
 		title.setMinSize(60, 20);
 		title.setTextFill(Paint.valueOf("#29446B"));
 		
-		angleValue = new TextField("0 °");
+		angleValue = new TextField("0Â°");
 		angleValue.setEditable(false);
 		angleValue.setMaxSize(70, 30);
 		angleValue.setStyle("-fx-text-fill: green; -fx-font-size: 16;");
@@ -42,7 +42,7 @@ public class VerticalKinectAngleSelectionPaneController {
 		sliderAnguloVertical.setLabelFormatter(new StringConverter<Double>(){
 				@Override
 				public String toString(Double object) {
-					return object + " °";
+					return object + "Â°";
 				}
 				
 				@Override
@@ -54,7 +54,7 @@ public class VerticalKinectAngleSelectionPaneController {
 		sliderAnguloVertical.valueProperty().addListener(new ChangeListener<Number>() {
             public void changed(ObservableValue<? extends Number> ov, Number old_val, Number new_val) {
                     mgic.setElevationAngle(new_val.intValue());
-        			angleValue.setText(String.valueOf(new_val.intValue())+" °");
+        			angleValue.setText(String.valueOf(new_val.intValue())+"Â°");
                 }
             });
 		

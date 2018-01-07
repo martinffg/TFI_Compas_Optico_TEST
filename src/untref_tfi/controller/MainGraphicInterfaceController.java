@@ -50,7 +50,7 @@ public class MainGraphicInterfaceController {
 		createImageRosaIconView();
 		pixelPanel = new SelectedPixelPaneController("Point Information");
 		outOfRangePanel = new OutOfRangePaneController("Out Of Range",this);
-		verticalAnglePanel = new VerticalKinectAngleSelectionPaneController("vAngle °",this);
+		verticalAnglePanel = new VerticalKinectAngleSelectionPaneController("vAngle",this);
 	}
 	
 	public Scene getMainScene(){
