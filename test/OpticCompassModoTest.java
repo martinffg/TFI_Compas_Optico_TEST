@@ -22,8 +22,9 @@ public class OpticCompassModoTest {
 			});
 			
 			thread.start();
-			Platform.exit();
+			Thread.sleep(1000);
 			Assert.assertFalse(Platform.isFxApplicationThread());
+			Platform.exit();
 		}catch(Exception ex){
 			//System.out.println("Exception stopping mainTest catched.");
 		}
