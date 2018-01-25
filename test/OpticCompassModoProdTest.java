@@ -16,7 +16,8 @@ public class OpticCompassModoProdTest {
 						String[] args = {};
 						oc.start(args);
 					}catch(Exception e){
-						//System.out.println("Exception launching OpticCompass.main catched.");
+						System.out.println("Exception launching mainProdTest run method catched.");
+						e.printStackTrace();
 					}
 				}
 			});
@@ -24,9 +25,9 @@ public class OpticCompassModoProdTest {
 			thread.start();
 			Thread.sleep(1000);
 			Assert.assertFalse(Platform.isFxApplicationThread());
-			Platform.exit();
 		}catch(Exception ex){
-			//System.out.println("Exception stopping mainProdTest catched.");
+			System.out.println("Exception in mainProdTest thread catched.");
+			ex.printStackTrace();
 		}
 	}
 }
